@@ -21,6 +21,7 @@ namespace UniversityRegistry.UI
     {
         public RegistryControl()
         {
+
             InitializeComponent();
 
             // Initializes the list of university people
@@ -38,6 +39,27 @@ namespace UniversityRegistry.UI
                 new Person(){FirstName="Dora", LastName="Explorer", DateOfBirth=new DateTime(1999, 6, 12), Role=Role.UndergraduateStudent, Active=true},
                 new Person(){FirstName="Caillou", LastName="Pine", DateOfBirth=new DateTime(1997, 9, 15), Role=Role.UndergraduateStudent, Active=true}
             };
+            //PersonList//.xaml.ListOne//.SelectionChanged += OnSelectionChanged;
+            //var x = new PersonList();
+            //x.ListOne.SelectionChanged += OnSelectionChanged;
+        }
+
+        /// <summary>
+        /// Updates the DataContext of the PersonControl to the item selected in
+        /// the PersonList
+        /// </summary>
+        /// <param name="sender">The list of people</param>
+        /// <param name="e">The selection details</param>
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count == 0)
+            {
+                pcDetails.DataContext = null;
+            }
+            else
+            {
+                pcDetails.DataContext = e.AddedItems[0];
+            }
         }
     }
 }
