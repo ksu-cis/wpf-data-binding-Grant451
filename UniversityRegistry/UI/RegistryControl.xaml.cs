@@ -20,13 +20,14 @@ namespace UniversityRegistry.UI
     /// </summary>
     public partial class RegistryControl : UserControl
     {
+        private ObservableCollection<Person> people;
         public RegistryControl()
         {
 
             InitializeComponent();
 
             // Initializes the list of university people
-            var people = new ObservableCollection<Person>()
+            people = new ObservableCollection<Person>()
             {
                 new Person(){FirstName="Mother", LastName="Goose", DateOfBirth=new DateTime(1843, 10, 20), Role=Role.Faculty, Active=false},
                 new Person(){FirstName="Peter", LastName="Pumpkineater", DateOfBirth=new DateTime(1966, 3, 15), Role=Role.Faculty, Active=true},
@@ -44,6 +45,8 @@ namespace UniversityRegistry.UI
             //var x = new PersonList();
             //x.ListOne.SelectionChanged += OnSelectionChanged;
         }
+
+
 
         /// <summary>
         /// Updates the DataContext of the PersonControl to the item selected in
